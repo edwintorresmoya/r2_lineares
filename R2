@@ -1,0 +1,18 @@
+correlacion <- function(matriz){
+    Recorrer <- 4:ncol(matriz)
+    r2 <- as.data.frame(matrix(NA,nrow = length(Recorrer),ncol = length(Recorrer)))
+    rownames(r2) <- colnames(matriz)[Recorrer]
+    colnames(r2) <- colnames(matriz)[Recorrer]
+    matriz   <- matriz[,Recorrer]
+    for(i in 1:length(Recorrer)){
+        for(j in   1:length(Recorrer)){
+            if(i!=j)r2[i,j]<-summary(lm(matriz[complete.cases(matriz[,c(i,j)]),i]~matriz[complete.cases(matriz[,c(i,j)]),j]))$r.squared
+        }
+    }
+    return(r2)    
+}
+correlacion(davis_todas_columnas_sinfiltro)
+names(total_davis_eddy)
+total_davis_eddy[,c(5,6)]),5]
+
+m1[complete.cases(m1[,1]),1]
